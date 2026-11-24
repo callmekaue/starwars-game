@@ -1,31 +1,91 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <link rel="icon" href="/Game/images/favicon-16x16.png">
- 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jogo da Memória | Star Wars</title>
+
+  <link rel="icon" href="../images/favicon-16x16.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;600&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="../css/reset.css">
+  <link rel="stylesheet" href="../css/style.css">
   <link rel="stylesheet" href="../css/game.css">
 
-
+  <script defer src="../js/stars.js"></script>
+  <script defer src="../js/sound.js"></script>
+  <script defer src="../js/characters.js"></script>
   <script defer src="../js/game.js"></script>
-
-  <title>Memory Game</title>
 </head>
+<body data-side="jedi">
+  <div class="backdrop" aria-hidden="true"></div>
+  <canvas id="starfield" aria-hidden="true"></canvas>
 
-<body>
+  <main class="game">
+    <header class="hud">
+      <div class="hud__stats">
+        <div class="stat stat--player">
+          <span class="stat__label">Jogador</span>
+          <span class="stat__value player">-</span>
+        </div>
+        <div class="stat">
+          <span class="stat__label">Tempo</span>
+          <span class="stat__value timer">00:00</span>
+        </div>
+        <div class="stat">
+          <span class="stat__label">Jogadas</span>
+          <span class="stat__value moves">0</span>
+        </div>
+        <div class="stat">
+          <span class="stat__label">Pares</span>
+          <span class="stat__value pairs">0/0</span>
+        </div>
+      </div>
 
-  <main>
-    <header>
-      <span class="player"></span>
-      <span>Tempo: <span class="timer">00</span></span>
+      <div class="hud__actions">
+        <button class="btn btn--ghost btn--icon js-sound" type="button" aria-label="Ligar ou desligar som" aria-pressed="true">
+          <svg class="icon-on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H2v6h4l5 4V5z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M19 5a10 10 0 0 1 0 14"/></svg>
+          <svg class="icon-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" hidden><path d="M11 5 6 9H2v6h4l5 4V5z"/><path d="m23 9-6 6"/><path d="m17 9 6 6"/></svg>
+        </button>
+        <button class="btn btn--ghost btn--icon js-restart" type="button" aria-label="Reiniciar partida">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg>
+        </button>
+        <a class="btn btn--ghost btn--icon" href="../index.html" aria-label="Voltar ao menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+        </a>
+      </div>
     </header>
 
-    <div class="grid"></div>
+    <div class="progress" aria-hidden="true"><div class="progress__bar"></div></div>
+
+    <div class="grid" role="grid" aria-label="Tabuleiro do jogo da memória"></div>
   </main>
 
-</body>
+  <div class="toast" role="status" aria-live="polite"></div>
 
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal__box">
+      <p class="modal__eyebrow">Missão cumprida</p>
+      <h2 class="modal__title" id="modal-title">Vitória</h2>
+      <p class="modal__text"></p>
+
+      <div class="rank" aria-hidden="true"><i></i><i></i><i></i></div>
+
+      <div class="results">
+        <div><span>Tempo</span><strong class="r-time">00:00</strong></div>
+        <div><span>Jogadas</span><strong class="r-moves">0</strong></div>
+        <div><span>Recorde</span><strong class="r-best">--</strong></div>
+      </div>
+
+      <p class="new-record" hidden>Novo recorde</p>
+
+      <div class="modal__actions">
+        <a class="btn btn--ghost" href="../index.html">Menu</a>
+        <button class="btn btn--primary js-again" type="button">Jogar de novo</button>
+      </div>
+    </div>
+  </div>
+</body>
 </html>

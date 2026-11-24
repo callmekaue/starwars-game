@@ -1,29 +1,79 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <link rel="icon" href="/Game/images/favicon-16x16.png">
- 
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Jogo da memória com temática Star Wars feito em HTML, CSS e JavaScript.">
+  <title>Jogo da Memória | Star Wars</title>
 
-    <link rel="stylesheet" href="./css/reset.css">
-    <link rel="stylesheet" href="./css/login.css">
+  <link rel="icon" href="./images/favicon-16x16.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;600&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
 
-    <script defer src="./js/login.js"></script>
-    
-    <title>Jogo da Memória | Login</title>
+  <link rel="stylesheet" href="./css/reset.css">
+  <link rel="stylesheet" href="./css/style.css">
+
+  <script defer src="./js/stars.js"></script>
+  <script defer src="./js/sound.js"></script>
+  <script defer src="./js/login.js"></script>
 </head>
-<body>
-    <form class='login--form'>
-        
-        <div class='login__header'>
-        <img src="./images/brain.png" alt="brain icon">
-        <h1>Memory Game</h1>
-        </div>
+<body data-side="jedi">
+  <div class="backdrop" aria-hidden="true"></div>
+  <canvas id="starfield" aria-hidden="true"></canvas>
 
-        <input type="text" placeholder="Name" class="login__input">
-        <button type="submit" class='login__button' disabled>Play</button>
+  <p class="intro__tagline" aria-hidden="true">Há muito tempo, numa galáxia muito, muito distante....</p>
+
+  <main class="intro">
+    <form class="login" novalidate>
+      <div class="login__title">
+        <small>Jogo da memória</small>
+        <h1>Star Wars<br>Memory</h1>
+        <div class="saber" aria-hidden="true"></div>
+      </div>
+
+      <div class="field">
+        <label class="field__label" for="player">Seu nome</label>
+        <input id="player" class="input" type="text" placeholder="Ex.: Kauê Skywalker" maxlength="20" autocomplete="nickname" required>
+        <p class="field__hint" aria-live="polite">Mínimo de 3 caracteres.</p>
+      </div>
+
+      <fieldset class="field">
+        <legend class="field__label">Escolha seu lado</legend>
+        <div class="choices" style="--n: 2">
+          <label class="choice choice--jedi">
+            <input type="radio" name="side" value="jedi" checked>
+            <span>Jedi<em>heróis e rebeldes</em></span>
+          </label>
+          <label class="choice choice--sith">
+            <input type="radio" name="side" value="sith">
+            <span>Sith<em>vilões e Império</em></span>
+          </label>
+        </div>
+      </fieldset>
+
+      <fieldset class="field">
+        <legend class="field__label">Dificuldade</legend>
+        <div class="choices" style="--n: 3">
+          <label class="choice">
+            <input type="radio" name="level" value="6">
+            <span>Padawan<em>6 pares</em></span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="level" value="8" checked>
+            <span>Cavaleiro<em>8 pares</em></span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="level" value="10">
+            <span>Mestre<em>10 pares</em></span>
+          </label>
+        </div>
+      </fieldset>
+
+      <button type="submit" class="btn btn--primary" disabled>Entrar no hiperespaço</button>
+
+      <p class="best" aria-live="polite"></p>
     </form>
+  </main>
 </body>
 </html>
