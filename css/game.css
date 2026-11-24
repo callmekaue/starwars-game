@@ -60,6 +60,7 @@
 }
 
 .stat--player .stat__value {
+  font-family: "Exo 2", sans-serif; /* nomes com acento (ã, õ) */
   color: var(--saber);
   text-shadow: 0 0 12px rgba(var(--saber-rgb), 0.5);
   max-width: 220px;
@@ -116,6 +117,7 @@
   background: none;
   cursor: pointer;
   transform-style: preserve-3d;
+  container-type: inline-size;
   /* animação de entrada (distribuição das cartas) */
   opacity: 0;
   animation: deal 0.6s var(--ease-spring) forwards;
@@ -218,7 +220,7 @@
   border-radius: 999px;
   background: rgba(5, 7, 13, 0.75);
   color: var(--saber);
-  font-size: clamp(0.45rem, 0.9vw, 0.6rem);
+  font-size: clamp(6px, 6.5cqi, 10px);
   font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -249,12 +251,13 @@
 .face__name {
   position: absolute;
   inset: auto 0 0;
-  padding: 26px 8px 8px;
-  background: linear-gradient(transparent, rgba(5, 7, 13, 0.92));
-  font-family: "Orbitron", sans-serif;
-  font-size: clamp(0.5rem, 1.1vw, 0.72rem);
-  font-weight: 700;
-  letter-spacing: 0.1em;
+  padding: 22px 6px 7px;
+  background: linear-gradient(transparent, rgba(5, 7, 13, 0.95) 55%);
+  font-family: "Exo 2", sans-serif;
+  font-size: clamp(7px, 9.5cqi, 13px); /* acompanha a largura da carta */
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: 0.03em;
   text-align: center;
   text-transform: uppercase;
 }
@@ -337,9 +340,10 @@
   background: var(--panel);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  font-family: "Orbitron", sans-serif;
-  font-size: 0.8rem;
-  letter-spacing: 0.12em;
+  font-family: "Exo 2", sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   box-shadow: 0 0 24px rgba(var(--saber-rgb), 0.3);
   transform: translate(-50%, 120px);

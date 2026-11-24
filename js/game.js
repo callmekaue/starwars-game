@@ -213,7 +213,7 @@ const checkPair = () => {
     sparks(second);
 
     const name = CHARACTERS.find((c) => c.id === first.dataset.character).name;
-    showToast(`${name} encontrado`);
+    showToast(`Par encontrado: ${name}`);
 
     resetTurn();
 

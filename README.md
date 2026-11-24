@@ -321,7 +321,7 @@ stateDiagram-v2
 <a name="s8"></a>
 <p align="center"><img src="starwars-readme-arquivos/fx/secao-08.svg" alt="08. Novos personagens" width="100%"></p>
 
-Os baralhos ficam em `js/characters.js`. Cada personagem usa a imagem `images/<id>.jpg`:
+Hoje **os 36 personagens já têm imagem**. Os baralhos ficam em `js/characters.js`, e cada personagem usa a imagem `images/<id>.jpg`:
 
 ```js
 { id: 'vader', name: 'Darth Vader', series: 'Rebels' }
